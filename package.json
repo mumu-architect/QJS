@@ -1,0 +1,22 @@
+{
+  "name": "qjs-mvvm",
+  "version": "0.1.1",
+  "description": "Js MVVM framework",
+  "main": "QJS.js",
+  "scripts": {
+    "test": "1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/1211884772/QJS.git"
+  },
+  "keywords": [
+    "--\u001b[Dxuelianhua123-"
+  ],
+  "author": "1211884772",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1211884772/QJS/issues"
+  },
+  "homepage": "https://github.com/1211884772/QJS#readme"
+}
