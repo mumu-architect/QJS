@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="school.name">
+        {{school.name}}
+        <div> {{school.name}} </div>
+        <div> {{school.age}} </div>
+        <!--如果数据不变化，视图就不会刷新-->
+        {{getNewName}}
+        <!--我们在内部，会匹配{{}}-->
+        <ui>
+            <li>1</li>
+            <li>1</li>
+        </ui>
+        <button v-on:click="change">更新数据</button>
+        <div v-html="message"></div>
+    </div>
+
+    <script type="module">
+        import {getUserList, changeUserState, addUser, getUserById, editUser, deleteUser} from '../../api/index.js'
+        import { Qvm } from '../../../Qvm/Qvm.js';
+        
+        let vm = new Qvm({
+            el: '#app',
+            data: {
+                school: {
+                    name: 'mumu',
+                    age: 18
+                },
+                message: '<h1>欢迎使用QJS</h1>'
+            },
+            computed: {
+                getNewName() {
+                    return this.school.name + '架构';
+                }
+            },
+            methods: {
+                initList() {
+                    getUserList({ params: { query: this.query, pagenum: this.pagenum, pagesize: this.pagesize } }).then(res => {
+                        console.log(res)
+                        this.total = res.data.total
+                        this.userList = res.data.users
+                    })
+                },
+                changeUserState(row) {
+                    console.log(row) // 表格所在行的数据 {create_time: 1486720211, email:"adsfad@qq.com",id:500,mg_state:true,mobile:"12345678",role_name:"超级管理员",username:"admin"}
+                    changeUserState({ uid: row.id, type: row.mg_state }).then(res => {
+                        if (res.meta.status === 200) {
+                            this.$message({
+                                type: 'success',
+                                message: '修改用户状态成功'
+                            })
+                        } else {
+                            this.$message({
+                                type: 'warning',
+                                message: res.meta.msg
+                            })
+                        }
+                    })
+                },
+                // 显示编辑用户对话框
+                showEditDialog(row) {
+                    this.editDialogFormVisible = true
+                    getUserById(row.id).then(res => {
+                        if (res.meta.status === 200) {
+                            this.editForm.username = res.data.username
+                            this.editForm.email = res.data.email
+                            this.editForm.mobile = res.data.mobile
+                            this.editForm.id = res.data.id
+                        }
+                    })
+                },
+                // 编辑用户提交
+                editUserSubmit(formName) {
+                    this.$refs[formName].validate(valide => {
+                        if (valide) {
+                            editUser(this.editForm).then(res => {
+                                if (res.meta.status === 200) {
+                                    this.$message({
+                                        type: 'success',
+                                        message: '编辑成功'
+                                    })
+                                    this.editDialogFormVisible = false
+                                    this.initList()
+                                }
+                            })
+                        }
+                    })
+                },
+                // 显示删除对话框
+                showDeleteDialog(row) {
+                    this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+                        confirmButtonText: '确定',
+                        cancelButtonText: '取消',
+                        type: 'warning'
+                    }).then(() => {
+                        // 执行删除用户操作
+                        deleteUser(row.id).then(res => {
+                            if (res.meta.status === 200) {
+                                this.$message({
+                                    type: 'success',
+                                    message: '删除成功!'
+                                })
+                                // this.pagenum = this.pagenum - 1
+                                // 注意删除完毕之后this.pagenum这条数据已经不存在了 所以要到前一条数据
+                                this.pagenum--
+                                this.initList()
+                            }
+                        })
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: '已取消删除'
+                        })
+                    })
+                },
+                change() {
+                    this.school.name = "mumu";
+                },
+
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,10 +1,16 @@
 {
-  "name": "qjs-mvvm",
-  "version": "0.1.1",
-  "description": "Js MVVM framework",
-  "main": "QJS.js",
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "main": "Qvm.js",
   "scripts": {
-    "test": "1"
+    "test": "1",
+    "start": "webpack-dev-server --hot",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -18,5 +24,27 @@
   "bugs": {
     "url": "https://github.com/1211884772/QJS/issues"
   },
-  "homepage": "https://github.com/1211884772/QJS#readme"
+  "homepage": "https://github.com/1211884772/QJS#readme",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "g": "^2.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "autoprefixer": "^10.4.19",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.10.0",
+    "html-webpack-plugin": "^5.6.0",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "mini-css-extract-plugin": "^2.8.1",
+    "postcss": "^8.4.38",
+    "postcss-loader": "^8.1.1",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4",
+    "workbox-webpack-plugin": "^7.0.0"
+  }
 }
