@@ -1,9 +1,9 @@
-//import axios from './node_modules/axios';
+import './node_modules/axios/dist/axios.js';
 
 
-import Qvm from '../qvm/Qvm.js';
-//import {getUserList, changeUserState, addUser, getUserById, editUser, deleteUser} from './src/api/index.js'
-//import * as math from './node_modules/mathjs'
+import Qvm from './node_modules/qvm-mvvm/qvm/Qvm.js';
+import { getUserList, changeUserState, addUser, getUserById, editUser, deleteUser } from './src/api/index.js'
+
 
 let vm = new Qvm({
     el: '#app',
@@ -22,13 +22,18 @@ let vm = new Qvm({
     methods: {
         initPath() {
             // 获取用户列表
-            getUserList = params => {
-                return axios.get('users', params).then(res => res.data)
+            let params = {
+                "username": "mumu",
+                "pwd": "123456"
             }
+            addUser(params);
+
+            return axios.get('users', params).then(res => res.data)
+
         },
         change() {
             this.school.name = "mumu";
-            let a = math.evaluate(2+3*5);
+            let a = math.evaluate(2 + 3 * 5);
             console.log(a)
         }
     }

@@ -29,7 +29,6 @@
     "axios": "^1.6.8",
     "form-data": "^4.0.0",
     "g": "^2.0.1",
-    "mathjs": "^12.4.1",
     "qvm-mvvm": "^1.0.1"
   },
   "devDependencies": {
