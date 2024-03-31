@@ -1,1 +1,2 @@
-console.log("Hello World!");
+import Qvm from '../qvm/Qvm.js';
+export { Qvm } 

@@ -1,11 +1,11 @@
 {
-  "name": "my-webpack-project",
-  "version": "1.0.0",
+  "name": "qvm-mvvm",
+  "version": "1.0.1",
   "description": "My webpack project",
-  "main": "Qvm.js",
+  "main": "./qvm/Qvm.js",
   "scripts": {
     "test": "1",
-    "start": "webpack-dev-server --hot",
+    "start": "webpack-dev-server ",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
@@ -27,7 +27,10 @@
   "homepage": "https://github.com/1211884772/QJS#readme",
   "dependencies": {
     "axios": "^1.6.8",
-    "g": "^2.0.1"
+    "form-data": "^4.0.0",
+    "g": "^2.0.1",
+    "mathjs": "^12.4.1",
+    "qvm-mvvm": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.24.3",

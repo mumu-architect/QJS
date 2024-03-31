@@ -13,16 +13,24 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 
 debugger;
 const config = {
+    devtool: "source-map",
+    cache: false,
     resolve: {
-        modules: [path.resolve(__dirname, './qvm'), 'node_modules'],
+        modules: [
+            'node_modules', // 使用node_modules目录
+        ],
+        alias: {
+            q$: path.resolve(__dirname, 'src')
+        }
     },
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
+        static: __dirname,
         open: true,
-        host: '127.0.0.1',
+        host: 'localhost',
         compress: true,
         port: 9000,
     },
@@ -38,8 +46,10 @@ const config = {
     ],
     module: {
         rules: [
+
             {
                 test: /\.(js|jsx)$/i,
+                exclude: /node_modules/,
                 loader: 'babel-loader',
             },
             {
@@ -64,10 +74,10 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
-        
+
+
         config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
-        
+
     } else {
         config.mode = 'development';
     }

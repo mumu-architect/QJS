@@ -1,5 +1,5 @@
 
-import axios from 'axios';
+import axios from '../../node_modules/axios';
 
 const baseURL = 'http://localhost:8080/api/dev/v1/'
 axios.defaults.baseURL = baseURL

@@ -25,3 +25,7 @@ npm install axios
 ```
 
 to bundle your application
+
+##### 发布包
+npm login
+npm publish命令来发布你的包

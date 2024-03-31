@@ -20,32 +20,10 @@
             <li>1</li>
         </ui>
         <button v-on:click="change">更新数据</button>
+        <button v-on:click="initPath">更新数据2</button>
         <div v-html="message"></div>
     </div>
 </body>
 
-<script type="module">
-    import { Qvm } from './qvm/Qjs.js';
-    let vm = new Qvm({
-        el: '#app',
-        data: {
-            school: {
-                name: 'mumu',
-                age: 18
-            },
-            message:'<h1>欢迎使用Qvm ^_^ !</h1>'
-        },
-        computed: {
-            getNewName() {
-                return this.school.name + '架构';
-            }
-        },
-        methods: {
-            change() {
-                this.school.name = "mumu";
-            }
-        }
-    })
-</script>
-
+<script type="module" src="App.js"></script>
 </html>
