@@ -5,31 +5,37 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 
-const isProduction = process.env.NODE_ENV == 'development';
+const isProduction = process.env.NODE_ENV == 'production';
 
 
 const stylesHandler = MiniCssExtractPlugin.loader;
 
+function resolve(dir) {
+    return path.join(__dirname, dir)
+}
 
 debugger;
 const config = {
-    devtool: "source-map",
-    cache: false,
+    //context: path.resolve(__dirname, 'src'),
     resolve: {
-        modules: [
-            'node_modules', // 使用node_modules目录
-        ],
+        modules: [path.resolve(__dirname, 'src'), 'node_modules'],
         alias: {
-            q$: path.resolve(__dirname, 'src')
+            '@api': resolve('src/api'),
+            '@src': path.resolve(__dirname, 'src'),
         }
     },
+    devtool: "source-map",
+    cache: false,
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
-        static: __dirname,
+        static: {
+            directory: path.join(__dirname, '/'),
+        },
         open: true,
+        hot: true,
         host: 'localhost',
         compress: true,
         port: 9000,
@@ -72,6 +78,7 @@ const config = {
 };
 
 module.exports = () => {
+
     if (isProduction) {
         config.mode = 'production';
 

@@ -1,0 +1,16 @@
+{
+  "name": "qvm-mvvm",
+  "version": "1.0.3",
+  "description": "A simple front-end development framework for MVVM",
+  "main": "core/Qvm.js",
+  "scripts": {
+    "test": "Testing framework"
+  },
+  "keywords": [
+    "Js",
+    "Javascript",
+    "MVVM"
+  ],
+  "author": "1211884772",
+  "license": "ISC"
+}

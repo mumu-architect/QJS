@@ -8,6 +8,7 @@
 
 <body>
     <div id="app">
+        <h1>首页</h1>
         <input type="text" v-model="school.name">
         {{school.name}}
         <div> {{school.name}} </div>
@@ -21,9 +22,11 @@
         </ui>
         <button v-on:click="change">更新数据</button>
         <button v-on:click="initPath">更新数据2</button>
+        <button v-on:click="localUser">跳到User</button>
+        <button v-on:click="localButton">跳到Button</button>
         <div v-html="message"></div>
     </div>
 </body>
 
-<script type="module" src="App.js"></script>
+<script type="module" src="./src/App.js" ></script>
 </html>

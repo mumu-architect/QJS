@@ -8,6 +8,7 @@
 
 <body>
     <div id="app">
+        <h1>user</h1>
         <input type="text" v-model="school.name">
         {{school.name}}
         <div> {{school.name}} </div>
@@ -20,13 +21,16 @@
             <li>1</li>
         </ui>
         <button v-on:click="change">更新数据</button>
+        <button v-on:click="initPath">更新数据2</button>
+        <button v-on:click="localUser">跳到User</button>
+        <button v-on:click="localButton">跳到Button</button>
         <div v-html="message"></div>
     </div>
 
     <script type="module">
-        import {getUserList, changeUserState, addUser, getUserById, editUser, deleteUser} from '../../api/index.js'
-        import { Qvm } from '../../../Qvm/Qvm.js';
-        
+        import { getUserList, changeUserState, addUser, getUserById, editUser, deleteUser } from '../../api/index.js'
+        import { Qvm } from '../../../node_modules/qvm-mvvm/Qvm.js';
+
         let vm = new Qvm({
             el: '#app',
             data: {
@@ -42,6 +46,17 @@
                 }
             },
             methods: {
+                change() {
+                    this.school.name = "mumu";
+                },
+                localUser() {
+                    location.href = "http://localhost:9000/src/view/user/index.html"
+                    this.school.name = "mumu";
+                },
+                localButton() {
+                    location.href = "http://localhost:9000/src/view/button/index.html"
+                    this.school.name = "mumu";
+                },
                 initList() {
                     getUserList({ params: { query: this.query, pagenum: this.pagenum, pagesize: this.pagesize } }).then(res => {
                         console.log(res)
@@ -120,11 +135,7 @@
                             message: '已取消删除'
                         })
                     })
-                },
-                change() {
-                    this.school.name = "mumu";
-                },
-
+                }
             }
         })
     </script>

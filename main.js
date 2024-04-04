@@ -2,7 +2,7 @@ import axios from './node_modules/axios';
 
 
 import {getUserList, changeUserState, addUser, getUserById, editUser, deleteUser} from '@/api'
-import { Qvm } from './Qvm';
+import { Qvm } from './qvm/Qvm.js';
 
 
 

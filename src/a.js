@@ -1,8 +1,7 @@
-import './node_modules/axios/dist/axios.js';
+import '../node_modules/axios/dist/axios.js';
 
-
-import Qvm from './node_modules/qvm-mvvm/qvm/Qvm.js';
-import { getUserList, changeUserState, addUser, getUserById, editUser, deleteUser } from './src/api/index.js'
+import Qvm from '../node_modules/qvm-mvvm/Qvm.js'
+import { getUserList, changeUserState, addUser, getUserById, editUser, deleteUser } from './api/index.js'
 
 
 let vm = new Qvm({

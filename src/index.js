@@ -1,2 +1,2 @@
-import Qvm from '../qvm/Qvm.js';
+import {Qvm} from '../node_modules/qvm-mvvm/Qvm.js';
 export { Qvm } 
