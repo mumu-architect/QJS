@@ -24,7 +24,6 @@ export default class Qvm {
             //数据劫持
             new Observer(this.$data);
 
-
             //计算方法
             //{{getNewName}} reduce vm.$data.getNewName
             for (let key in computed) {//有依赖关系，数据
@@ -34,6 +33,7 @@ export default class Qvm {
                     }
                 })
             }
+
 
             //所有普通事件方法
             for (let key in methods) {

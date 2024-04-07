@@ -1,6 +1,6 @@
 import '../node_modules/axios/dist/axios.js';
 
-import Qvm from '../node_modules/qvm-mvvm/Qvm.js'
+import {Qvm} from 'qvm-mvvm/Qvm.js'
 import { getUserList, changeUserState, addUser, getUserById, editUser, deleteUser } from './api/index.js'
 
 
@@ -32,8 +32,15 @@ let vm = new Qvm({
         },
         change() {
             this.school.name = "mumu";
-            let a = math.evaluate(2 + 3 * 5);
-            console.log(a)
+        },
+        localUser() {
+            location.href="http://localhost:9000/src/view/user/index.html"
+        },
+        localButton() {
+            location.href="http://localhost:9000/src/view/button/index.html"
+        },
+        loginButton(){
+            location.href="http://localhost:9000/src/view/login/index.html"
         }
     }
 })

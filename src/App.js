@@ -35,11 +35,12 @@ let vm = new Qvm({
         },
         localUser() {
             location.href="http://localhost:9000/src/view/user/index.html"
-            this.school.name = "mumu";
         },
         localButton() {
             location.href="http://localhost:9000/src/view/button/index.html"
-            this.school.name = "mumu";
+        },
+        loginButton(){
+            location.href="http://localhost:9000/src/view/login/index.html"
         }
     }
 })
