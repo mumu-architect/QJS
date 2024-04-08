@@ -25,6 +25,10 @@ export default class Compiler {
     isDirective(attrName) {
         return attrName.startsWith('v-');
     }
+    //判断是否@开头
+    isAite(attrName) {
+        return attrName.startsWith('@');
+    }
     /**
      * 编译元素
      * @param {*} node 
@@ -43,6 +47,13 @@ export default class Compiler {
                 let [directiveName, eventName] = directive.split(':');
                 //需要调用不同指令来处理
                 CompileUtil[directiveName](node, expr, this.vm, eventName);
+            }
+
+             //判断是否@开头
+            if(this.isAite(name)){
+                let [directiveName, eventName] = name.split(':');
+                //需要调用不同指令来处理
+                CompileUtil['onEvent'](node, expr, this.vm, eventName);
             }
 
         })

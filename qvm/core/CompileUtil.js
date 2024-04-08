@@ -1,6 +1,7 @@
 
 
 import { Watcher } from './Watcher.js';
+import { UtilsFunc } from './utils/func.js'
 //编译功能方法
 export const CompileUtil = {
     //根据表达式取到对应的数据
@@ -85,6 +86,17 @@ export const CompileUtil = {
         node.addEventListener(eventName, (e) => {
             //动态调用变量只能使用vm.[expr]
             vm[expr].call(vm, e);//this.change
+        });
+    },
+    onEvent(node, expr, vm, eventName) {//v-on:click="change" ,expr
+        node.addEventListener(eventName, (e) => {
+            //动态调用变量只能使用vm.[expr]
+            let newExpr = UtilsFunc.replaceSpaces(expr)
+            let pattern = /\b[a-zA-Z_\.\/$][\/\.a-zA-Z_$0-9]*\b/g;
+            let params = newExpr.match(pattern);
+            let funName=UtilsFunc.getMethodName(newExpr)
+
+            vm[funName].call(vm,e,...params);//this.change
         });
     },
     /**

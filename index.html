@@ -74,6 +74,7 @@
             background-color: #555;
         }
 
+        /* 菜单 */
         .q-menu {
             width: 100%;
             height: auto;
@@ -82,12 +83,17 @@
             padding: 0;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         .q-menu-item {
             height: 50px;
             line-height: 50px;
             padding-left: 20px;
             color: rgb(191, 203, 217);
             background-color: rgb(48, 65, 86);
+            cursor: pointer;
 
         }
 
@@ -97,59 +103,91 @@
             background-color: rgb(38, 52, 69);
         }
 
+        .app-main, .app-container{
+            height: 100%;
+
+        }
+
+        /* 横向导航 */
         .navbar {
             line-height: 50px;
             height: 50px;
             display: flex;
         }
-        .hamburger-container{
+
+        .hamburger-container {
             width: 300px;
 
         }
-        .breadcrumb-container{
+
+        .breadcrumb-container {
             flex: 1;
         }
-        .right-menu{
+
+        .right-menu {
             width: 300px;
             display: flex;
         }
-        .left-menu-item{
+
+        .left-menu-item {
             flex: 1;
         }
-        .right-menu-item{
+
+        .right-menu-item {
             width: 50px;
 
         }
-        .avatar-wrapper{
+
+        .avatar-wrapper {
             width: 50px;
             height: 50px;
         }
-        .hamburger-container{
+
+        .hamburger-container {
             width: 50px;
             height: 50px;
         }
-        .hamburger-container>.hamburger{
+
+        .hamburger-container>.hamburger {
             width: 30px;
             height: 30px;
         }
-        .avatar-wrapper>img{
+
+        .avatar-wrapper>img {
             width: 40px;
             height: 40px;
             border-radius: 10px;
         }
-        .tags-view-container{
+
+        .tags-view-container {
             height: 40px;
             line-height: 40px;
         }
-        .tags-view-wrapper{
+      
+        .tags-view-wrapper {
             height: 40px;
             border-top: 1px solid #555;
             border-bottom: 1px solid #555;
         }
-         .tags-view-item{
-            padding: 0 5px;
+
+        .tags-view-item {
+            padding: 5px 5px;
             margin: 0 5px;
             border: 1px solid #555;
+            cursor: pointer;
+        }
+        .tags-view-item.active{
+            background-color: red;
+        }
+
+        /* 展示内容 */
+        .q-iframe-dev {
+            height: 100%;
+            display: none;
+        }
+
+        .q-iframe-dev.active {
+            display: block;
         }
     </style>
 </head>
@@ -162,24 +200,25 @@
                     <div class="scrollbar-wrapper q-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
                         <div class="q-scrollbar__view">
                             <ul role="menubar" class="q-menu--collapse q-menu"><!----><!----><!----><!----><!---->
-                                <div><a href="#/dashboard" class="">
-                                        <li role="menuitem" tabindex="-1" class="q-menu-item submenu-title-noDropdown">
+                                <div>
+                                    <a @:click="localIframe('./src/view/dashboard/index.html','dashboard')" class="q-menu-a">
+                                    <li role="menuitem" tabindex="-1" class="q-menu-item submenu-title-noDropdown">
                                             <span>dashboard</span>
-                                        </li>
+                                    </li>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="#/documentation/index" class="">
+                                    <a @:click="localIframe('./src/view/user/index.html','user')"  class="q-menu-a">
                                         <li role="menuitem" tabindex="-1" class="q-menu-item submenu-title-noDropdown">
-                                            <span>documentation</span>
+                                            <span>user</span>
                                         </li>
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="#/guide/index" class="router-link-exact-active router-link-active">
+                                    <a @:click="localIframe('./src/view/login/index.html','login')"  class="q-menu-a">
                                         <li role="menuitem" tabindex="-1"
                                             class="q-menu-item is-active submenu-title-noDropdown">
-                                            <span>guide</span>
+                                            <span>login</span>
                                         </li>
                                     </a>
                                 </div><!---->
@@ -222,18 +261,17 @@
                 </div>
             </div>
             <div class="main-container hasTagsView">
-                <div>
+                
                     <!-- nav start -->
                     <div class="navbar">
                         <div class="hamburger-container" style="padding: 0px 15px;">
-                            <svg   viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"
-                                class="hamburger">
+                            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="hamburger">
                                 <path data-v-4e6f274c=""
                                     d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM142.4 642.1L298.7 519a8.84 8.84 0 0 0 0-13.9L142.4 381.9c-5.8-4.6-14.4-.5-14.4 6.9v246.3a8.9 8.9 0 0 0 14.4 7z">
                                 </path>
                             </svg>
                         </div>
-                        <div  class="breadcrumb-container" id="breadcrumb-container">
+                        <div class="breadcrumb-container" id="breadcrumb-container">
                             <span>
                                 <span d class="el-breadcrumb__item" aria-current="page">
                                     <span role="link" class="el-breadcrumb__inner">
@@ -283,16 +321,17 @@
                     <!-- tags-view-container start -->
                     <div id="tags-view-container" class="tags-view-container">
                         <div class="scroll-container tags-view-wrapper el-scrollbar">
-                            <div class="el-scrollbar__wrap" style="margin-bottom: -17px; margin-right: -17px;">
-                                <div class="el-scrollbar__view">
-                                    <span class="tags-view-item"> Dashboard <!----></span>
-                                    <span class="tags-view-item"> Documentation <!---->
+                            <div class="el-scrollbar__wrap">
+                                <div class="q-scrollbar-view">
+                                    <span class="tags-view-item active"> Dashboard <!---->
+                                    </span>
+                                    <!-- <span class="tags-view-item"> Documentation 
                                         <span class="el-icon-close">X</span>
                                     </span>
-                                    <span class="tags-view-item router-link-exact-active router-link-active active">
+                                    <span class="tags-view-item  ">
                                         Guide
                                         <span class="el-icon-close">X</span>
-                                    </span>
+                                    </span> -->
                                 </div>
                             </div>
                         </div>
@@ -301,18 +340,16 @@
 
                     <section class="app-main">
                         <div class="app-container">
-                            <aside> The guide page is useful for some people who entered the project for the first
-                                time. You
-                                can briefly introduce the features of the project. Demo is based on <a
-                                    href="https://github.com/kamranahmedse/driver.js" target="_blank">driver.js.</a>
-                            </aside>
-                            <button type="button" class="el-button el-button--primary el-button--medium"><!----><i
-                                    class="el-icon-question"></i><span> Show Guide </span></button>
+                            <div id="q-iframe-1" class="q-iframe-dev active">
+                                <iframe class="q-iframe" width="100%" height="100%" frameborder="no" marginwidth="0" marginheight="0"
+                                    src="./src/view/dashboard/index.html"></iframe>
+                            </div>
                         </div>
                     </section>
-                </div>
+                
             </div>
         </div>
+    </div>
 </body>
 
 <script type="module" src="./src/App.js"></script>
