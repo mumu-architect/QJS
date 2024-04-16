@@ -1,0 +1,144 @@
+.q-form--inline .q-form-item, .q-form--inline .q-form-item__content {
+    display: inline-block;
+    vertical-align: top
+}
+
+.q-form-item::after, .q-form-item__content::after {
+    clear: both
+}
+
+.q-form--label-left .q-form-item__label {
+    text-align: left
+}
+
+.q-form--label-top .q-form-item__label {
+    float: none;
+    display: inline-block;
+    text-align: left;
+    padding: 0 0 10px
+}
+
+.q-form--inline .q-form-item {
+    margin-right: 10px
+}
+
+.q-form--inline .q-form-item__label {
+    float: none;
+    display: inline-block
+}
+
+.q-form--inline.q-form--label-top .q-form-item__content {
+    display: block
+}
+
+.q-form-item::after, .q-form-item::before, .q-form-item__content::after, .q-form-item__content::before {
+    display: table;
+    content: ""
+}
+
+.q-form-item {
+    margin-bottom: 22px
+}
+
+.q-form-item .q-form-item {
+    margin-bottom: 0
+}
+
+.q-form-item--mini.q-form-item, .q-form-item--small.q-form-item {
+    margin-bottom: 18px
+}
+
+.q-form-item .q-input__validateIcon {
+    display: none
+}
+
+.q-form-item--medium .q-form-item__content, .q-form-item--medium .q-form-item__label {
+    line-height: 36px
+}
+
+.q-form-item--small .q-form-item__content, .q-form-item--small .q-form-item__label {
+    line-height: 32px
+}
+
+.q-form-item--small .q-form-item__error {
+    padding-top: 2px
+}
+
+.q-form-item--mini .q-form-item__content, .q-form-item--mini .q-form-item__label {
+    line-height: 28px
+}
+
+.q-form-item--mini .q-form-item__error {
+    padding-top: 1px
+}
+
+.q-form-item__label-wrap {
+    float: left
+}
+
+.q-form-item__label-wrap .q-form-item__label {
+    display: inline-block;
+    float: none
+}
+
+.q-form-item__label {
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: 14px;
+    color: #606266;
+    line-height: 40px;
+    padding: 0 12px 0 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.q-form-item__content {
+    line-height: 40px;
+    position: relative;
+    font-size: 14px
+}
+
+.q-form-item__content .q-input-group {
+    vertical-align: top
+}
+
+.q-form-item__error {
+    color: #F56C6C;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 4px;
+    position: absolute;
+    top: 100%;
+    left: 0
+}
+
+.q-form-item__error--inline {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: inline-block;
+    margin-left: 10px
+}
+
+.q-form-item.is-required:not(.is-no-asterisk) .q-form-item__label-wrap>.q-form-item__label:before, .q-form-item.is-required:not(.is-no-asterisk)>.q-form-item__label:before {
+    content: '*';
+    color: #F56C6C;
+    margin-right: 4px
+}
+
+.q-form-item.is-error .q-input__inner, .q-form-item.is-error .q-input__inner:focus, .q-form-item.is-error .q-textarea__inner, .q-form-item.is-error .q-textarea__inner:focus {
+    border-color: #F56C6C
+}
+
+.q-form-item.is-error .q-input-group__append .q-input__inner, .q-form-item.is-error .q-input-group__prepend .q-input__inner {
+    border-color: transparent
+}
+
+.q-form-item.is-error .q-input__validateIcon {
+    color: #F56C6C
+}
+
+.q-form-item--feedback .q-input__validateIcon {
+    display: inline-block
+}

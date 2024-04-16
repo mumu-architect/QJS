@@ -61,7 +61,7 @@ let vm = new Qvm({
             let newCloseId = "nav-close-" + id;
             html += '<span id="' + newId + '" class="tags-view-item  active">';
             html += title;
-            html += ' <span id="' + newCloseId + '" class="q-icon-close">X</span>';
+            html += ' <span id="' + newCloseId + '" class="q-icon-close"></span>';
             html += '</span>';
             let scrollbarDivs = document.querySelectorAll('.q-scrollbar-view')
             if (scrollbarDivs.length > 0) {

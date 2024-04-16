@@ -1,0 +1,31 @@
+.q-select  {
+    display: inline-block;
+    position: relative;
+}
+
+.q-select__ul{
+    width:100%;
+    display: block;
+}
+
+.q-select__option{
+    font-size: 14px;
+    padding: 0 20px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #606266;
+    height: 34px;
+    line-height: 34px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.q-select__option:hover{
+    background-color: #f5f7fa;
+    cursor:pointer;
+}
+.q-select__option.selected {
+    color: #409eff;
+    font-weight: 700;
+}
